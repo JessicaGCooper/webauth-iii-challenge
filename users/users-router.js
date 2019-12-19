@@ -13,7 +13,7 @@ router.get("/users", restricted, checkDept("Finance"), (req, res) => {
 
 function checkDept(department) {
     return function(req, res, next) {
-      if (req.token && role === req.token.department) {
+      if (req.token && department === req.token.department) {
         next();
       } else {
         res
